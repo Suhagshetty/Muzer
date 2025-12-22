@@ -3,45 +3,83 @@ import { assets } from "../assets/assets";
 
 const Sidebar = () => {
   return (
-    <div className="w-[25%] h-full px-2 py-3 flex-col gap-3 text-white hidden lg:flex bg-black">
-      {/* Top nav */}
-      <div className="bg-[#121212] h-[15%] rounded-lg flex flex-col justify-center gap-2">
-        <div className="flex items-center gap-4 px-6 py-1 cursor-pointer hover:text-white/90">
-          <img className="w-6 opacity-90" src={assets.home_icon} alt="" />
+    <div className="w-[25%] h-full px-2 py-3 hidden lg:flex flex-col gap-3 text-white bg-black">
+      {/* Top Navigation */}
+      <div className="bg-[#121212] rounded-lg flex flex-col gap-2 py-3">
+        <div className="flex items-center gap-4 px-6 py-2 cursor-pointer hover:text-white">
+          <img className="w-6 opacity-90" src={assets.home_icon} alt="Home" />
           <p className="font-semibold text-sm">Home</p>
         </div>
-        <div className="flex items-center gap-4 px-6 py-1 cursor-pointer hover:text-white/90">
-          <img className="w-6 opacity-90" src={assets.search_icon} alt="" />
+        <div className="flex items-center gap-4 px-6 py-2 cursor-pointer hover:text-white">
+          <img
+            className="w-6 opacity-90"
+            src={assets.search_icon}
+            alt="Search"
+          />
           <p className="font-semibold text-sm">Search</p>
         </div>
       </div>
 
       {/* Library */}
-      <div className="bg-[#121212] h-[85%] rounded-lg">
+      <div className="bg-[#121212] rounded-lg flex-1 flex flex-col">
+        {/* Library Header */}
         <div className="px-4 py-3 flex items-center justify-between border-b border-white/5">
           <div className="flex items-center gap-3">
-            <img src={assets.stack_icon} className="w-7 opacity-90" alt="" />
+            <img
+              src={assets.stack_icon}
+              className="w-6 opacity-90"
+              alt="Library"
+            />
             <p className="font-semibold text-sm text-white/90">Your Library</p>
           </div>
-          <div className="flex items-center gap-5">
-            <img className="w-5" src={assets.arrow_icon} alt="" />
-            <img className="w-5" src={assets.play_icon} alt="" />
+          <div className="flex items-center gap-4">
+            <img
+              className="w-4 cursor-pointer opacity-80 hover:opacity-100"
+              src={assets.arrow_icon}
+              alt="Expand"
+            />
+            <img
+              className="w-4 cursor-pointer opacity-80 hover:opacity-100"
+              src={assets.play_icon}
+              alt="Play"
+            />
           </div>
         </div>
-        <div className="p-4 bg-[#242424] m-2 rounded font-semibold flex flex-col items-start justify-start pl-1">
-          <h1>Create your first playlist</h1>
-          <p className="font-light">Its easy we will help you</p>
-          <button className="px-4 py-1.5 bg-white text-[15px] text-black rounded-full mt-4">
-            Create Playlist
+
+        {/* Playlist Card */}
+        <div className="p-4 bg-[#242424] m-2 rounded-md">
+          <h1 className="font-semibold text-sm mb-1">
+            Create your first playlist
+          </h1>
+          <p className="text-xs text-white/70">It's easy, we’ll help you</p>
+          <button className="px-4 py-1.5 bg-white text-sm text-black rounded-full mt-4 hover:scale-105 transition">
+            Create playlist
           </button>
         </div>
-      </div>
-      <div className="p-4 bg-[#242424] m-2 rounded font-semibold flex flex-col items-start justify-start pl-1">
-        <h1>Let's find some podcasts to follow</h1>
-        <p className="font-light">we'll keep you updated on new episodes</p>
-        <button className="px-4 py-1.5 bg-white text-[15px] text-black rounded-full mt-4">
-          Browse podcasts
-        </button>
+
+        {/* Podcast Card */}
+        <div className="p-4 bg-[#242424] m-2 rounded-md">
+          <h1 className="font-semibold text-sm mb-1">
+            Let’s find some podcasts to follow
+          </h1>
+          <p className="text-xs text-white/70">
+            We’ll keep you updated on new episodes
+          </p>
+          <button className="px-4 py-1.5 bg-white text-sm text-black rounded-full mt-4 hover:scale-105 transition">
+            Browse podcasts
+          </button>
+        </div>
+        <div className="p-4 bg-[#242424] m-2 rounded-md">
+          <h1 className="font-semibold text-sm mb-1">
+            Let’s find some podcasts to follow
+          </h1>
+          <p className="text-xs text-white/70">
+            We’ll keep you updated on new episodes
+          </p>
+          <button className="px-4 py-1.5 bg-white text-sm text-black rounded-full mt-4 hover:scale-105 transition">
+            Browse podcasts
+          </button>
+        </div>
       </div>
     </div>
   );

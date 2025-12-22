@@ -1,3 +1,4 @@
+import Player from "./component/Player";
 import Sidebar from "./component/Sidebar";
 function App() {
   return (
@@ -5,6 +6,7 @@ function App() {
       <div>
         <Sidebar />
       </div>
+      <Player />
     </div>
   );
 }
