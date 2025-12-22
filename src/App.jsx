@@ -2,6 +2,7 @@ import React from "react";
 import Display from "./component/Display";
 import Player from "./component/Player";
 import Sidebar from "./component/Sidebar";
+
 const App = () => {
   return (
     <div className="h-screen bg-black">
