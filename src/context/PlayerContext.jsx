@@ -16,7 +16,7 @@ const PlayerContextProvider = ({ children }) => {
     totalTime: { minute: 0, second: 0 },
   });
 
-  /* ---------------- PLAY / PAUSE ---------------- */
+  /* ---------- PLAY / PAUSE ---------- */
 
   const play = () => {
     if (!audioRef.current) return;
@@ -30,7 +30,22 @@ const PlayerContextProvider = ({ children }) => {
     setPlayStatus(false);
   };
 
-  /* ---------------- TIME + SEEK BAR SYNC ---------------- */
+  /* ---------- SEEK ON CLICK ---------- */
+
+  const seekSong = (e) => {
+    const bg = seekBg.current;
+    const audio = audioRef.current;
+    if (!bg || !audio) return;
+
+    const rect = bg.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const width = rect.width;
+
+    const percent = clickX / width;
+    audio.currentTime = percent * audio.duration;
+  };
+
+  /* ---------- TIME + PROGRESS SYNC ---------- */
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -64,23 +79,21 @@ const PlayerContextProvider = ({ children }) => {
     };
   }, []);
 
-  /* ---------------- CONTEXT VALUE ---------------- */
-
-  const contextValue = {
-    audioRef,
-    seekBg,
-    seekBar,
-    track,
-    setTrack,
-    playStatus,
-    setPlayStatus,
-    time,
-    play,
-    pause,
-  };
-
   return (
-    <PlayerContext.Provider value={contextValue}>
+    <PlayerContext.Provider
+      value={{
+        audioRef,
+        seekBg,
+        seekBar,
+        track,
+        setTrack,
+        playStatus,
+        play,
+        pause,
+        time,
+        seekSong,
+      }}
+    >
       {children}
     </PlayerContext.Provider>
   );

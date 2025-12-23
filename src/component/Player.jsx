@@ -3,10 +3,9 @@ import { assets } from "../assets/assets";
 import { PlayerContext } from "../context/PlayerContext";
 
 const Player = () => {
-  const { track, seekBar, seekBg, playStatus, play, pause, time } =
+  const { track, seekBg, seekBar, playStatus, play, pause, time, seekSong } =
     useContext(PlayerContext);
 
-  // Guard: prevents crash before track loads
   if (!track) return null;
 
   const formatTime = (t) => {
@@ -33,7 +32,7 @@ const Player = () => {
       </div>
 
       {/* CENTER */}
-      <div className="flex flex-col items-center gap-2 m-auto">
+      <div className="flex flex-col items-center gap-2 m-auto w-full max-w-xl">
         <div className="flex items-center gap-4">
           <img className="w-4" src={assets.prev_icon} alt="Prev" />
 
@@ -56,15 +55,16 @@ const Player = () => {
           <img className="w-4" src={assets.next_icon} alt="Next" />
         </div>
 
-        {/* PROGRESS */}
+        {/* SEEK BAR */}
         <div className="flex items-center gap-3 text-xs w-full">
           <p>{formatTime(time.currentTime)}</p>
 
           <div
             ref={seekBg}
-            className="w-[60vw] max-w-[500px] bg-gray-300 rounded-full"
+            onClick={seekSong}
+            className="flex-1 h-1 bg-gray-600 rounded-full cursor-pointer relative"
           >
-            <div ref={seekBar} className="h-1 bg-green-600 rounded-full" />
+            <div ref={seekBar} className="h-1 bg-green-500 rounded-full" />
           </div>
 
           <p>{formatTime(time.totalTime)}</p>
